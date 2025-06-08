@@ -1,17 +1,48 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from datetime import date, timedelta
 import pandas as pd
 import numpy as np
 from neuralforecast import NeuralForecast
 from neuralforecast.models import NBEATSx
+from sqlalchemy.orm import Session
+
+from database import init_db, get_db, Tenant, Item, Sale
 
 class DemandRequest(BaseModel):
     branch: str
     horizon: int
     window: str  # e.g. "3H", "6H", "1D"
 
+class TenantOut(BaseModel):
+    id: int
+    name: str
+
+    class Config:
+        orm_mode = True
+
+class ItemOut(BaseModel):
+    id: int
+    name: str
+
+    class Config:
+        orm_mode = True
+
+class SaleOut(BaseModel):
+    id: int
+    item_id: int
+    date: date
+    quantity: int
+
+    class Config:
+        orm_mode = True
+
 app = FastAPI()
+
+
+@app.on_event("startup")
+def on_startup():
+    init_db()
 
 # simple in-memory data for tasks and orders
 class Task(BaseModel):
@@ -79,6 +110,21 @@ def _forecast_demand(horizon: int, window: str):
 def predict_demand(req: DemandRequest):
     preds = _forecast_demand(req.horizon, req.window)
     return {'branch': req.branch, 'predictions': preds}
+
+
+@app.get('/tenants', response_model=list[TenantOut])
+def list_tenants(db: Session = Depends(get_db)):
+    return db.query(Tenant).all()
+
+
+@app.get('/tenants/{tenant_id}/items', response_model=list[ItemOut])
+def list_items(tenant_id: int, db: Session = Depends(get_db)):
+    return db.query(Item).filter(Item.tenant_id == tenant_id).all()
+
+
+@app.get('/tenants/{tenant_id}/sales', response_model=list[SaleOut])
+def list_sales(tenant_id: int, db: Session = Depends(get_db)):
+    return db.query(Sale).filter(Sale.tenant_id == tenant_id).all()
 
 
 @app.get('/tasks')
