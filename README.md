@@ -13,7 +13,7 @@ The frontend lives in the `frontend/` directory and uses React with Vite. It pro
 Install dependencies with `npm install` inside the `frontend` folder.
 
 ## Backend
-The backend lives in the `backend/` directory and uses FastAPI. It exposes a `/predict` endpoint that accepts a branch name and number of days to forecast. Example usage:
+The backend lives in the `backend/` directory and uses FastAPI. It exposes a `/predict` endpoint that accepts a branch name, `horizon` and time `window` for the forecast. The backend generates predictions with Nixtla's **neuralforecast** library and considers extra factors like price, product placement and weather.
 
 ```bash
 uvicorn main:app --reload
