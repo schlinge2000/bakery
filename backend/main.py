@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from datetime import date, timedelta
 import pandas as pd
 import numpy as np
 from neuralforecast import NeuralForecast
@@ -11,6 +12,28 @@ class DemandRequest(BaseModel):
     window: str  # e.g. "3H", "6H", "1D"
 
 app = FastAPI()
+
+# simple in-memory data for tasks and orders
+class Task(BaseModel):
+    id: int
+    title: str
+    due_date: date
+    completed: bool = False
+
+class Order(BaseModel):
+    id: int
+    date: date
+    quantity: int
+
+tasks = [
+    Task(id=1, title="Dienstag planen", due_date=date.today() + timedelta(days=1)),
+    Task(id=2, title="Auslage sortieren", due_date=date.today() + timedelta(days=2)),
+]
+
+orders = [
+    Order(id=1, date=date.today() - timedelta(days=1), quantity=50),
+    Order(id=2, date=date.today(), quantity=40),
+]
 
 def _forecast_demand(horizon: int, window: str):
     periods = 100
@@ -56,3 +79,27 @@ def _forecast_demand(horizon: int, window: str):
 def predict_demand(req: DemandRequest):
     preds = _forecast_demand(req.horizon, req.window)
     return {'branch': req.branch, 'predictions': preds}
+
+
+@app.get('/tasks')
+def list_tasks():
+    return tasks
+
+
+@app.get('/orders')
+def list_orders():
+    return orders
+
+
+@app.get('/weather/{plz}')
+def get_weather(plz: str):
+    today = date.today()
+    data = []
+    for i in range(7):
+        day = today + timedelta(days=i)
+        data.append({
+            'date': day,
+            'temperature': np.random.uniform(-5, 30),
+            'plz': plz,
+        })
+    return data
