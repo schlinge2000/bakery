@@ -23,3 +23,15 @@ Install dependencies from `backend/requirements.txt` using `pip`.
 
 ## Purpose
 The app is an early prototype that will help bakery managers plan the demand for bread, pastries and other goods for the next days.
+
+## Local Development
+Run `./start_local.sh` from the project root to start both backend and frontend. The script spawns the FastAPI server and the Vite dev server.
+
+The backend stores data in a local SQLite file (`backend/app.db`). To populate it with demo products and sales run:
+
+```bash
+python backend/mock_data.py
+```
+
+## AWS Deployment
+For production we plan to containerize the services with Docker and run them on Amazon EKS. Container images keep the option open to run on EC2 or other services later.
