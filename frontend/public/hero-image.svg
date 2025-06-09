@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" rx="20" fill="#F5F9FC"/>
+  
+  <!-- Chart -->
+  <path d="M100 400C100 400 150 300 200 350C250 400 300 250 350 300C400 350 450 200 500 250C550 300 600 150 650 200C700 250 700 400 700 400H100Z" fill="url(#paint0_linear)" fill-opacity="0.6"/>
+  <path d="M100 400C100 400 150 300 200 350C250 400 300 250 350 300C400 350 450 200 500 250C550 300 600 150 650 200C700 250 700 400 700 400" stroke="#2BBCBC" stroke-width="3"/>
+  
+  <!-- Bread icons -->
+  <circle cx="200" cy="150" r="60" fill="#FFE0B2"/>
+  <path d="M170 150C170 133.431 183.431 120 200 120V120C216.569 120 230 133.431 230 150V180C230 196.569 216.569 210 200 210V210C183.431 210 170 196.569 170 180V150Z" fill="#FFCC80"/>
+  <path d="M170 150C170 150 185 170 200 170C215 170 230 150 230 150" stroke="#E65100" stroke-width="3"/>
+  
+  <circle cx="400" cy="200" r="70" fill="#FFE0B2"/>
+  <path d="M360 200C360 178.909 377.909 161 400 161V161C422.091 161 440 178.909 440 200V239C440 261.091 422.091 279 400 279V279C377.909 279 360 261.091 360 239V200Z" fill="#FFCC80"/>
+  <path d="M360 200C360 200 380 230 400 230C420 230 440 200 440 200" stroke="#E65100" stroke-width="3"/>
+  
+  <circle cx="600" cy="150" r="50" fill="#FFE0B2"/>
+  <path d="M570 150C570 133.431 583.431 120 600 120V120C616.569 120 630 133.431 630 150V180C630 196.569 616.569 210 600 210V210C583.431 210 570 196.569 570 180V150Z" fill="#FFCC80"/>
+  <path d="M570 150C570 150 585 170 600 170C615 170 630 150 630 150" stroke="#E65100" stroke-width="3"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="400" y1="150" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2BBCBC"/>
+      <stop offset="1" stop-color="#2BBCBC" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

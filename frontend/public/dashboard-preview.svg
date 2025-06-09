@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" rx="12" fill="white"/>
+  
+  <!-- Header -->
+  <rect width="800" height="60" fill="#F5F9FC"/>
+  <rect x="20" y="20" width="120" height="20" rx="4" fill="#2BBCBC"/>
+  <circle cx="750" cy="30" r="20" fill="#F0F0F0"/>
+  
+  <!-- Sidebar -->
+  <rect width="200" height="500" fill="#F5F9FC"/>
+  <rect x="20" y="80" width="160" height="40" rx="20" fill="#2BBCBC"/>
+  <rect x="20" y="140" width="160" height="40" rx="4" fill="#F0F0F0"/>
+  <rect x="20" y="200" width="160" height="40" rx="4" fill="#F0F0F0"/>
+  <rect x="20" y="260" width="160" height="40" rx="4" fill="#F0F0F0"/>
+  
+  <!-- Content -->
+  <!-- Cards -->
+  <rect x="220" y="80" width="130" height="100" rx="8" fill="white" stroke="#E0E0E0"/>
+  <rect x="230" y="90" width="80" height="15" rx="2" fill="#F0F0F0"/>
+  <rect x="230" y="115" width="50" height="25" rx="2" fill="#2BBCBC" fill-opacity="0.2"/>
+  <rect x="230" y="150" width="100" height="10" rx="2" fill="#F0F0F0"/>
+  
+  <rect x="370" y="80" width="130" height="100" rx="8" fill="white" stroke="#E0E0E0"/>
+  <rect x="380" y="90" width="80" height="15" rx="2" fill="#F0F0F0"/>
+  <rect x="380" y="115" width="50" height="25" rx="2" fill="#FF7F66" fill-opacity="0.2"/>
+  <rect x="380" y="150" width="100" height="10" rx="2" fill="#F0F0F0"/>
+  
+  <rect x="520" y="80" width="130" height="100" rx="8" fill="white" stroke="#E0E0E0"/>
+  <rect x="530" y="90" width="80" height="15" rx="2" fill="#F0F0F0"/>
+  <rect x="530" y="115" width="50" height="25" rx="2" fill="#4CAF50" fill-opacity="0.2"/>
+  <rect x="530" y="150" width="100" height="10" rx="2" fill="#F0F0F0"/>
+  
+  <rect x="670" y="80" width="110" height="100" rx="8" fill="white" stroke="#E0E0E0"/>
+  <rect x="680" y="90" width="80" height="15" rx="2" fill="#F0F0F0"/>
+  <rect x="680" y="115" width="50" height="25" rx="2" fill="#2BBCBC" fill-opacity="0.2"/>
+  <rect x="680" y="150" width="80" height="10" rx="2" fill="#F0F0F0"/>
+  
+  <!-- Chart -->
+  <rect x="220" y="200" width="560" height="200" rx="8" fill="white" stroke="#E0E0E0"/>
+  <rect x="240" y="220" width="150" height="20" rx="2" fill="#F0F0F0"/>
+  <rect x="240" y="250" width="100" height="10" rx="2" fill="#F0F0F0"/>
+  
+  <!-- Chart lines -->
+  <path d="M240 350C240 350 280 330 320 340C360 350 400 300 440 320C480 340 520 280 560 300C600 320 640 270 680 290C720 310 720 350 720 350H240Z" fill="url(#paint0_linear)" fill-opacity="0.6"/>
+  <path d="M240 350C240 350 280 330 320 340C360 350 400 300 440 320C480 340 520 280 560 300C600 320 640 270 680 290C720 310 720 350 720 350" stroke="#2BBCBC" stroke-width="2"/>
+  
+  <!-- Table -->
+  <rect x="220" y="420" width="560" height="60" rx="8" fill="white" stroke="#E0E0E0"/>
+  <line x1="240" y1="450" x2="760" y2="450" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="240" y="430" width="80" height="10" rx="2" fill="#F0F0F0"/>
+  <rect x="350" y="430" width="60" height="10" rx="2" fill="#F0F0F0"/>
+  <rect x="450" y="430" width="60" height="10" rx="2" fill="#F0F0F0"/>
+  <rect x="550" y="430" width="60" height="10" rx="2" fill="#F0F0F0"/>
+  <rect x="650" y="430" width="60" height="10" rx="2" fill="#F0F0F0"/>
+  
+  <rect x="240" y="460" width="80" height="10" rx="2" fill="#F0F0F0"/>
+  <rect x="350" y="460" width="60" height="10" rx="2" fill="#F0F0F0"/>
+  <rect x="450" y="460" width="60" height="10" rx="2" fill="#F0F0F0"/>
+  <rect x="550" y="460" width="60" height="10" rx="2" fill="#F0F0F0"/>
+  <rect x="650" y="460" width="60" height="10" rx="2" fill="#F0F0F0"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="480" y1="270" x2="480" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2BBCBC"/>
+      <stop offset="1" stop-color="#2BBCBC" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
