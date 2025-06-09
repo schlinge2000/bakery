@@ -1,25 +1,45 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import Dashboard from './Dashboard.jsx';
-import PlanPage from './PlanPage.jsx';
-import OrdersPage from './OrdersPage.jsx';
-import DisplayCasePage from './DisplayCasePage.jsx';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Layout from './components/Layout';
+import Dashboard from './Dashboard';
+import PlanPage from './PlanPage';
+import OrdersPage from './OrdersPage';
+import DisplayCasePage from './DisplayCasePage';
+import LandingPage from './LandingPage';
 
-const App = () => {
+// Ockerfarbe für ein bodenständigeres Design
+const ockerColor = '#D7B963';
+
+// Theme mit Ockerfarbe anpassen
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#5D4037', // Braun als Hauptfarbe
+      dark: '#4E342E',
+      light: '#8D6E63',
+    },
+    secondary: {
+      main: ockerColor, // Ockerfarbe als Sekundärfarbe
+    },
+    background: {
+      default: '#f8f5f0', // Heller Beige-Hintergrund
+    },
+  },
+});
+
+function App() {
   return (
-    <div>
-      <h1>Bakery Demand Planner</h1>
+    <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/plan" element={<PlanPage />} />
-        <Route path="/orders" element={<OrdersPage />} />
-        <Route path="/display" element={<DisplayCasePage />} />
-        <Route path="*" element={<p>Seite nicht gefunden</p>} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+        <Route path="/plan" element={<Layout><PlanPage /></Layout>} />
+        <Route path="/orders" element={<Layout><OrdersPage /></Layout>} />
+        <Route path="/display" element={<Layout><DisplayCasePage /></Layout>} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <footer style={{ marginTop: '2em' }}>
-        <Link to="/">Home</Link>
-      </footer>
-    </div>
+    </ThemeProvider>
   );
 };
 

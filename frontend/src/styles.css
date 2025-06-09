@@ -1,0 +1,99 @@
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #e6f7f7 0%, #f5f9fc 100%);
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Gradient background for sidebar */
+.sidebar-gradient {
+  background: linear-gradient(180deg, #f5f9fc 0%, #e6f7f7 100%);
+}
+
+/* Card hover effect */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Chart gradient fill */
+.chart-gradient-primary {
+  fill: url(#gradient-primary);
+}
+
+.chart-gradient-secondary {
+  fill: url(#gradient-secondary);
+}
+
+/* Button styles */
+.action-button {
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+/* Status indicators */
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.status-success {
+  background-color: #4caf50;
+}
+
+.status-warning {
+  background-color: #ff9800;
+}
+
+.status-error {
+  background-color: #f44336;
+}
+
+/* Header styles */
+.app-header {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Animation for loading */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.loading-pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
