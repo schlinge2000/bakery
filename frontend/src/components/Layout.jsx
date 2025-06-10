@@ -27,6 +27,7 @@ import {
 } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 import { Link, useLocation } from 'react-router-dom';
+import Logo from './Logo';
 
 const drawerWidth = 240;
 
@@ -84,7 +85,7 @@ const DrawerStyled = styled(Drawer)(({ theme, open }) => ({
 
 const menuItems = [
   { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
-  { text: 'Planung', icon: <AnalyticsIcon />, path: '/plan' },
+  { text: 'Verkaufsplanung', icon: <AnalyticsIcon />, path: '/planning' },
   { text: 'Bestellungen', icon: <OrdersIcon />, path: '/orders' },
   { text: 'Ladentheke', icon: <StoreIcon />, path: '/display' },
 ];
@@ -110,7 +111,8 @@ const Layout = ({ children }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+            <Logo height={32} width={64} />
             <Typography
               component="h1"
               variant="h6"
@@ -118,7 +120,7 @@ const Layout = ({ children }) => {
               noWrap
               sx={{ fontWeight: 600 }}
             >
-              Mehl & Methode
+              Mehl & Modell
             </Typography>
             <Typography 
               variant="caption" 

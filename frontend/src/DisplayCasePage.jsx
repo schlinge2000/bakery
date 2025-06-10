@@ -30,25 +30,6 @@ import DisplayGrid from './components/DisplayGrid';
 import TimeSelector from './components/TimeSelector';
 import BakeryIcons from './components/BakeryIcons';
 
-// Hilfsfunktion zum Erstellen eines SVG-Data-URI aus einem SVG-Element
-const svgToDataURI = (svgElement) => {
-  const svgString = new XMLSerializer().serializeToString(svgElement);
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgString)}`;
-};
-
-// Produkte mit Icons definieren
-const createProductsWithIcons = () => {
-  return [
-    { id: 1, name: 'Brötchen', icon: '/bakery-icons/broetchen.svg' },
-    { id: 2, name: 'Brezel', icon: '/bakery-icons/brezel.svg' },
-    { id: 3, name: 'Baguette', icon: '/bakery-icons/baguette.svg' },
-    { id: 4, name: 'Laugenstange', icon: '/bakery-icons/laugenstange.svg' },
-    { id: 5, name: 'Croissant', icon: '/bakery-icons/croissant.svg' },
-    { id: 6, name: 'Kürbiskernbrot', icon: '/bakery-icons/kuerbiskernbrot.svg' },
-    { id: 7, name: 'Apfeltasche', icon: '/bakery-icons/apfeltasche.svg' },
-    { id: 8, name: 'Nussecken', icon: '/bakery-icons/nussecken.svg' },
-  ];
-};
 
 // Leeres Auslagenraster erstellen
 const createEmptyGrid = (rows, cols) => {
@@ -157,7 +138,7 @@ const DisplayCasePage = () => {
     if (!destination) return;
     
     // Wenn das Produkt aus der Produktliste kommt
-    if (source.droppableId === 'product-list') {
+    if (source.droppableId === 'productList') {
       const productIndex = source.index;
       const product = products[productIndex];
       
@@ -177,8 +158,36 @@ const DisplayCasePage = () => {
         newTimeGrids[selectedTime] = newGrid;
         setTimeGrids(newTimeGrids);
       }
+    } else if (source.droppableId.startsWith('slot-') && destination.droppableId.startsWith('slot-')) {
+      // Produkt innerhalb des Grids verschieben
+      const [, sourceRowStr, sourceColStr] = source.droppableId.match(/slot-(\d+)-(\d+)/) || [];
+      const [, destRowStr, destColStr] = destination.droppableId.match(/slot-(\d+)-(\d+)/) || [];
+
+      if (sourceRowStr && sourceColStr && destRowStr && destColStr) {
+        const sourceRowIndex = parseInt(sourceRowStr, 10);
+        const sourceColIndex = parseInt(sourceColStr, 10);
+        const destRowIndex = parseInt(destRowStr, 10);
+        const destColIndex = parseInt(destColStr, 10);
+
+        // Wenn Quelle und Ziel identisch sind, nichts tun
+        if (sourceRowIndex === destRowIndex && sourceColIndex === destColIndex) return;
+
+        const newGrid = currentGrid.map(row => row.map(slot => ({ ...slot }))); // Tiefe Kopie
+        const draggedProduct = newGrid[sourceRowIndex][sourceColIndex].product;
+
+        // Prüfen, ob das Ziel-Slot leer ist oder ob wir Produkte tauschen wollen
+        // Fürs Erste: Einfaches Verschieben, überschreibt Ziel, wenn nicht leer.
+        // Besser wäre, den Inhalt zu tauschen, wenn das Ziel-Slot besetzt ist.
+        newGrid[sourceRowIndex][sourceColIndex].product = null; // Alte Position leeren
+        newGrid[destRowIndex][destColIndex].product = draggedProduct; // Neue Position setzen
+        
+        setCurrentGrid(newGrid);
+
+        const newTimeGrids = { ...timeGrids };
+        newTimeGrids[selectedTime] = newGrid;
+        setTimeGrids(newTimeGrids);
+      }
     }
-    // Hier könnte man auch das Verschieben zwischen Slots implementieren
   };
   
   // Produkt aus einem Slot entfernen

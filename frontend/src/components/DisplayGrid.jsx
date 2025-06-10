@@ -12,7 +12,7 @@ const DisplaySlot = ({ slot, index, rowIndex }) => {
   const slotId = `slot-${rowIndex}-${index}`;
   
   return (
-    <Droppable droppableId={slotId}>
+    <Droppable droppableId={slotId} type="PRODUCTS">
       {(provided, snapshot) => (
         <Paper
           ref={provided.innerRef}

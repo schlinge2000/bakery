@@ -15,12 +15,10 @@ import '@fontsource/roboto/700.css';
 import './styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline /> {/* Provides a consistent baseline CSS */}
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ThemeProvider>
-  </React.StrictMode>
 );

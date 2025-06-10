@@ -9,7 +9,7 @@ import {
   ListItemText,
   Divider
 } from '@mui/material';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 // Komponente für ein einzelnes Produkt in der Sidebar
 const ProductCard = ({ product, index }) => {
@@ -82,15 +82,29 @@ const ProductList = ({ products }) => {
       </Typography>
       <Divider sx={{ mb: 2 }} />
       
-      <List sx={{ p: 0 }}>
-        {products.map((product, index) => (
-          <ProductCard 
-            key={product.id} 
-            product={product} 
-            index={index} 
-          />
-        ))}
-      </List>
+      <Droppable droppableId="productList" type="PRODUCTS">
+        {(provided, snapshot) => (
+          <List 
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            sx={{ 
+              p: 0,
+              bgcolor: snapshot.isDraggingOver ? 'rgba(215, 204, 163, 0.1)' : 'transparent',
+              borderRadius: 1,
+              minHeight: '100px' // Ensure droppable area has some height
+            }}
+          >
+            {products.map((product, index) => (
+              <ProductCard 
+                key={product.id} 
+                product={product} 
+                index={index} 
+              />
+            ))}
+            {provided.placeholder}
+          </List>
+        )}
+      </Droppable>
       
       <Typography 
         variant="caption" 

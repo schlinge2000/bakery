@@ -7,6 +7,7 @@ import PlanPage from './PlanPage';
 import OrdersPage from './OrdersPage';
 import DisplayCasePage from './DisplayCasePage';
 import LandingPage from './LandingPage';
+import PlanningPage from './PlanningPage';
 
 // Ockerfarbe für ein bodenständigeres Design
 const ockerColor = '#D7B963';
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
         <Route path="/plan" element={<Layout><PlanPage /></Layout>} />
+        <Route path="/planning" element={<Layout><PlanningPage /></Layout>} />
         <Route path="/orders" element={<Layout><OrdersPage /></Layout>} />
         <Route path="/display" element={<Layout><DisplayCasePage /></Layout>} />
         <Route path="*" element={<Navigate to="/" />} />
